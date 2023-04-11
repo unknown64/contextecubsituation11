@@ -1,23 +1,23 @@
 ﻿#====================================================================================
-#NAME: exerciceAUDIT2DHCP.ps1
+#NAME: exerciceAUDIT2dhcp.ps1
 #AUTHOR: MANGIN Pierre
 #DATE: 11/04/2023
 #
-#VERSION 1.1
-#COMMENTS: Script permettant de vérifier le statut des plages DHCP
+#VERSION 1.2
+#COMMENTS: Afficher le statut des plages DHCP
 #Requires -Version 2.0
 #====================================================================================
-
 
 # Récupération de la date de l'audit
 $dateAudit = Get-Date
 
 # Création du fichier de sortie
-$auditFile = "C:\git_cub\contextecubsituation11auditDHCP.txt"
+$auditFile = "C:\git_cub\contextecubsituation11\auditDHCP.txt"
 New-Item -ItemType File -Path $auditFile -Force | Out-Null
 
 # Récupération des plages DHCP et vérification de leur activité
-Get-DhcpServerv4Scope | ForEach-Object {
+$dhcpServer = "localhost" # A modifier si on souhaite tester un autre serveur DHCP que le nôtre
+Get-DhcpServerv4Scope -ComputerName $dhcpServer | ForEach-Object {
     $scopeName = $_.Name
     $scopeState = $_.State
     if ($scopeState -eq "Active") {
