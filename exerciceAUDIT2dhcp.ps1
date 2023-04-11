@@ -1,4 +1,15 @@
-﻿# Récupération de la date de l'audit
+﻿#====================================================================================
+#NAME: exerciceAUDIT2DHCP.ps1
+#AUTHOR: MANGIN Pierre
+#DATE: 11/04/2023
+#
+#VERSION 1.1
+#COMMENTS: Script permettant de vérifier le statut des plages DHCP
+#Requires -Version 2.0
+#====================================================================================
+
+
+# Récupération de la date de l'audit
 $dateAudit = Get-Date
 
 # Création du fichier de sortie
